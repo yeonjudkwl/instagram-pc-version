@@ -165,7 +165,7 @@ li{
     flex: 1;
 }
 ```
-`div class="con_wrap"`에 `display:flex;`를 적용하여 내부 `div`들이 옆으로 쌓이게 해줍니다.
+`div class="con_wrap"`에 `display:flex;`를 적용하여 내부 `div`들이 옆으로 쌓이게 해줍니다.<br>
 `flex`를 통해 `conA`:`conB`=2:1로 비율을 지정해줍니다.
 
 
@@ -204,7 +204,8 @@ li{
 ```
 
 >메인 이미지를 넣어줍니다.
-```<img src="images/picture.png" alt="" class="con_img">
+```
+<img src="images/picture.png" alt="" class="con_img">
 ```
 
 >각 logo들을 넣어줍니다.
