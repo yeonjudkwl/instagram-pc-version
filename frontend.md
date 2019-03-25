@@ -121,7 +121,7 @@ li{
 `header`에 `display:flex;`를 적용시켜 준 후, `justify-content`와 `align-items`를 통해 가로 세로 정렬을 해줍니다.
 그리고 아까 지정해놓은 `class`를 통해 각 이미지의 크기 및 여백을 지정해 줍니다.
 
-![../img/instagram_header.jpg](../img/instagram_header.jpg)
+![./img/instagram_header.jpg](./img/instagram_header.jpg)
 
 이러게 나오면 header는 완성!!!
 
