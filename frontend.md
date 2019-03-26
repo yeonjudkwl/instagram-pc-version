@@ -367,9 +367,9 @@ li{
  ```
  ![./img/ConB1.PNG](./img/ConB1.PNG)
 
-축하합니다. 인스타그램 PC Version의 큰 틀은 만들었어요오!!!
+축하합니다. 인스타그램 PC Version의 큰 틀은 만들었어요오!!!<br>
 `conA`의 `con`게시물과 `story`의 `story_content`를 여러분이 원하시는 만큼 Ctrl+C Ctrl+V 해주세요.
--------------------------------------사진넣기
+
 ```
 <div class="story">
     <div class="story_title">
