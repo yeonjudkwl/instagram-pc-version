@@ -121,7 +121,7 @@ li{
 `header`에 `display:flex;`를 적용시켜 준 후, `justify-content`와 `align-items`를 통해 가로 세로 정렬을 해줍니다.
 그리고 아까 지정해놓은 `class`를 통해 각 이미지의 크기 및 여백을 지정해 줍니다.
 
-![./img/instagram_header.jpg](./img/instagram_header.jpg)
+![./img/Header.PNG](./img/Header.PNG)
 
 이러게 나오면 header는 완성!!!
 
@@ -132,6 +132,9 @@ li{
 
 ```
 <body>
+    <header>
+    ...
+    </header>
     <div class="con_wrap">
         <div class="conA">
             ...
@@ -174,9 +177,10 @@ li{
 
 ```
 <div class="conA">
+    <!-- 하나의 게시물을 만들어줍니다. -->
     <div class="con">
         <div class="title">
-            ... 이미지와 이름이 들어갑니다
+            ... 프로필사진과 User이름이 들어갑니다
         </div>
         메인 이미지가 들어갑니다.
         <div class="logos">
@@ -195,18 +199,20 @@ li{
 ```
 `conA`안에 들어갈 내용들을 생각하여 `div`로 틀을 만들어 줍니다.
 
->title에는 프로필사진과 이름이 들어갑니다.
+>title에는 프로필사진과 User이름이 들어갑니다.
 ```
 <div class="title">
     <img src="images/hong.png" alt="" class="img">
-    <p>yeonju</p>
+    <p>User name</p>
 </div>
 ```
+프로필사진의 크기를 조절하기 위해 `class="img"`를 추가합니다.
 
 >메인 이미지를 넣어줍니다.
 ```
 <img src="images/picture.png" alt="" class="con_img">
 ```
+메인 이미지의 크기를 조절하기 위해 `class=con_img"`를 추가합니다.
 
 >각 logo들을 넣어줍니다.
 ```
@@ -222,16 +228,19 @@ li{
 </div>
 ```
 `div`로 오른쪽에 들어갈 logo와 왼쪽에 들어갈 logo를 지정해줍니다.
+각 `div`마다 이름을 정해주고,
+로고 이미지의 크기를 조절하기 위해 `class=logo_img"`를 추가합니다.
 
 
 >이미지 밑에 좋아요 수, 해시태그, 댓글창이 들어갑니다.
 ```
 <div class="content">
     <p><b>좋아요 80개</b></p>
-    <p><a href="">yeonju</a>#해달 #html #css</p>
+    <p><a href="">User name</a>#해달 #html #css</p>
     <input type="text" name="" id="" value="댓글달기">
 </div>
 ```
+`<a href=""></a>`는 링크를 걸어줍니다.
 
 ### 3-1. conA css 작업하기
 ```
@@ -244,7 +253,7 @@ li{
     background-color: #ffffff;
 }
 .title{
-    display: flex;
+    display: flex;      /*프로필사진과 User이름이 옆으로 쌓이게 하기 위함.*/
     margin: 10px;
 }
 .title p{
@@ -260,8 +269,8 @@ li{
     border-radius: 50%;
 }
 .logos{
-    display:flex;
-    justify-content: space-between;
+    display:flex;                       /*logo들이 옆으로 쌓이게 하기 위함.*/
+    justify-content: space-between;     /*logos_left와 logos_right를 양끝으로 배치시킴.*/
     padding: 0 10px;
 }
 .content{
@@ -281,10 +290,154 @@ li{
 ```
 `input:focus`는 입력창에 클릭했을 때 파란테두리가 나타나는데 `outline: none;`을 해주면 파란테두리가 없어집니다.
 
+![./img/ConA.PNG](./img/ConA.PNG)
+
+이러게 나오면 ConA도 완성!!!
         
+## 4. conB 내용채우기
+```
+<div class="conB">
+    <!-- 프로필사진과 user이름이 들어갑니다. -->
+    <div class="profile">
+        <img src="images/hong.png" alt="" class="img">
+        <p>User name</p>
+    </div>  
+    <!-- Story목록이 들어갑니다. -->      
+    <div class="story">
+        <div class="story_title">
+            <p>스토리</p>
+            <p><b>모두 보기</b></p>
+        </div>
+        <!-- story를 업로드 한 user의 프로필 사진과 이름이 들어갑니다. -->
+        <div class="story_content">
+            <img src="images/hong.png" alt="" class="story_img">
+            <p>User name</p>
+        </div>
+    </div>        
+ </div>
+ ```
+
+ ### 4-1. conB css 작업하기
+ ```
+.conB{
+    flex: 1;
+}
+.profile{
+    display: flex;
+    margin: 10px;
+}
+.profile p{
+    margin: 5px 15px;
+    font-size: 20px;
+}
+.story{
+    width: 250px;
+    height: 170px;
+    margin: 20px 5px;
+    padding: 10px;
+    border: 1px solid #DBDBDB;
+    border-radius: 3px;
+    overflow: auto;             /* div의 크기보다 내용이 더 많으면 스크롤이 생기게 해줍니다.*/
+}
+.story_title{
+    display:flex;
+    justify-content: space-between;
+}
+.story_title p:nth-child(1){    /*`class="story_title"`의 첫 번째 `p`를 가리킵니다.("스토리")*/
+    color: #999999;
+    font-size: 14px;
+}
+.story_title p:nth-child(2){    /*`class="story_title"`의 두 번째 `p`를 가리킵니다.("모두 보기")*/
+    color: #262626;
+    font-size: 12px;
+}
+.story_img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.story_content{
+    display: flex;
+    margin: 10px;
+}
+.story_content p{
+    margin: 5px 15px;
+    font-size: 16px;
+}
+ ```
+ ![./img/ConB1.PNG](./img/ConB1.PNG)
+
+축하합니다. 인스타그램 PC Version의 큰 틀은 만들었어요오!!!
+`conA`의 `con`게시물과 `story`의 `story_content`를 여러분이 원하시는 만큼 Ctrl+C Ctrl+V 해주세요.
+-------------------------------------사진넣기
+```
+<div class="story">
+    <div class="story_title">
+        <p>스토리</p>
+        <p><b>모두 보기</b></p>
+    </div>
+    <!-- story를 업로드 한 user의 프로필 사진과 이름이 들어갑니다. -->
+    <div class="story_content">
+        <img src="images/hong.png" alt="" class="story_img">
+        <p>User name</p>
+    </div>
+    <div class="story_content">
+        <img src="images/hong.png" alt="" class="story_img">
+        <p>User name</p>
+    </div>
+    <div class="story_content">
+        <img src="images/hong.png" alt="" class="story_img">
+        <p>User name</p>
+    </div>
+    <div class="story_content">
+        <img src="images/hong.png" alt="" class="story_img">
+        <p>User name</p>
+    </div>
+</div> 
+```
 
 
+Story 밑에 추천 친구의 목록도 만들어 볼게요.
+위에 보이는 코드처럼 본인의`class="story"`를 모두 Ctrl+C 해줍니다.
+바로 밑에 Ctrl+V 해주세요:)
+`story_title`의 `p`를 `회원님을 위한 추천`으로 수정해주세요!
+ ![./img/ConB2.PNG](./img/ConB2.PNG)
 
 
+## 5. 추가 기능 넣어보기.
+> conB를 적당한 위치에 고정시켜볼 거에요. 
+> 그리고 화면의 크기가 줄어들었을 때 conB의 내용을 숨겨보도록 합시다.
 
-[생활코딩](https://opentutorials.org/course/1)
+```
+.conB{
+    flex: 1;
+    position: sticky;
+    top: 50px;
+}
+```
+`conB`에 `position: sticky;`와  `top: 50px;`를 추가해줍니다.
+즉, 스크롤을 내리면 `conA`는 계속 내려가지만 `conB`는 위에서 50px위치에 고정되어 있습니다.
+
+```
+@media screen and (max-width: 1000px) {
+    .conB{
+        display: none;
+    }
+}
+```
+`style.css`의 마지막 부분에 위의 코드를 추가해줍니다.
+화면의 가로 비율이 1000px보다 작거나 같을 때 `conB`의 내용을 숨겨줍니다.
+
+이제 마지막!!!!
+`html`파일의  `head>title`부분에 이미지를 추가해봅시다.
+```
+<head>
+    <title>instagram</title>
+    <link rel="shortcut icon" href="images/instacolor.png">
+    <link rel="stylesheet" href="./style.css">
+</head>
+```
+`<link rel="shortcut icon" href="images/instacolor.png">`를 추가하면 됩니다!
+
+모두 수고하셨어요!
+`html` `css`에 대해 더 공부하고 싶다면 [w3school](https://www.w3schools.com/)를 추천드려요:)
